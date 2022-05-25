@@ -1,0 +1,158 @@
+body{
+    background: linear-gradient(90deg, #85F6B8 0%, rgba(142, 217, 235, 0.85) 99.84%);
+    background-blend-mode: darken;
+}
+.questions_box,.success,.chess{
+    display: none;
+}
+.start_modal,.questions_box,
+.box_display,.success,.chess{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width:400px;
+    min-width:300px;
+    transform:translate(-50%,-50%);
+    background-color: #ffff;
+    transition: all 0.5s ease;
+}
+.start_modal h1{
+    font-weight: 500;
+}
+.start_modal h1,p{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: center;
+    color: #555555;
+}
+.start_modal label{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #555555;
+    margin: 15px;
+}
+.start_modal input{
+    padding: 5px;
+    margin: 15px;
+    width: 350px;
+    background: #FFFFFF;
+    border: 1px solid #FF3838;
+}
+.btn_wrapper{
+    text-align: center;
+}
+.start_btn{
+    background-color: #028A3D;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #ffff;
+    padding:20px;
+    margin: 10px;
+}
+.questions_box p{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
+    color: #555555;   
+}
+.questions_box input{
+    border: 1px solid #DDDDDD;
+    border-radius: 20px;
+}
+
+.questions_box .option{
+    width: 350px;
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    padding: 10px;
+    margin: 15px;
+    cursor: pointer;
+} 
+.btns{
+    text-align: center;
+    margin: 15px;
+}
+.btns .quit{
+    color: aliceblue;
+    background: #EC880C;
+    padding: 10px 50px 10px 50px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    margin: 10px;
+}
+.btns .continu{
+    background:rgba(2, 138, 61, 0.42);
+    cursor: pointer;
+    padding: 10px 50px 10px 50px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.timer{
+    float: right;
+    padding: 5px;
+}
+.success,.chess{
+    padding: 25px;
+    text-align: center;
+}
+.success .success_name{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+    color: #555555;
+}
+.success .success_email{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #555555;
+}
+.home1,.home2{
+    background: #0880D6;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+  padding:5px;
+}
+.progress-bar{
+    width: 100%;
+    background: #028A3D;
+    border-radius: 10px;
+    height: 5px;
+}
+#required_mail{
+    font-size: 10px;
+    color: red;
+    padding: 5px;
+}
+#required_name{
+    font-size: 10px;
+    color: red;
+    padding: 5px;
+}

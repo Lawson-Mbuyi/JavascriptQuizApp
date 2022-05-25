@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Quiz App</title>
+</head>
+<body>
+    <div class="start_modal">
+        <h1>JavaScrypt Quiz</h1>
+        <p>Evaluez vos compétences en javaScrypt en répondant aux questions que nous avons spécialement selectionner pour vous.</p>
+      <p> C'est fun et c'est gratuit</p>
+        <form method="POST" action="" class="start_form">
+            <label for="name">Nom</label><br>
+            <input type="text" name="name" class="name"><br>
+          <label id="required_name"></label><br>
+            <label for="email">Email</label><br>
+            <input type="email" name="email"class="email"><br>
+        <label id="required_mail"></label>
+            <div class="btn_wrapper">
+                <button type="submit" class="start_btn">Commencer</button>
+            </div >
+        </form>
+    </div>
+    <div class="questions_box">
+        <div >
+            <p class="question_text"></p>
+            <p>Question N°<span class="nth_question">1/15</span><span class="timer"></span></p>
+        </div>
+        <div class="progress-bar"></div>
+        <form method="POST" class="choice_option">
+            <div class="option"><input type="radio" name="option"id="a"class="answer"><label for="a"id="a_text"></label></div>
+            <div class="option"><input type="radio" name="option"id="b"class="answer"><label for="b"id="b_text"></label></div>
+            <div class="option"><input type="radio" name="option"id="c"class="answer"><label for="c"id="c_text"></label></div>
+            <div class="option"><input type="radio" name="option"id="d"class="answer"><label for="d"id="d_text"></label></div>
+            <div class="btns">
+                    <button type="submit" name="quit" class="quit">Quitter</button><button type="button" name="continu" class="continu">Suivant</button>
+            </div>
+        </form>
+
+        </div>
+    <div class="success">
+        <h2 class="success_name"></h2>
+        <p class="success_email"></p>
+        <div class="icon_tick">
+            <img src="./ant-design_check-circle-outlined.png"width="150">
+        </div>
+        <p><span  id="success_score"></span></p>
+        <button type="submit" class="home1">Accueil</button>
+    </div>
+    <div class="chess">
+        <h2 class="chess_name"></h2>
+        <p class="chess_email"></p>
+        <div class="icon_tick">
+            <img src="./ant-design_close-circle-outlined.png" width="150">
+        </div>
+        <p><span id="chess_score"></span></p>
+        <button type="submit" class="home2">Accueil</button>
+    </div>
+    
+  <script src="script.js"></script>  
+</body>
+</html>
