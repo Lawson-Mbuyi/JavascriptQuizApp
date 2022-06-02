@@ -17,19 +17,19 @@ let questions_db=[
     d:"Document Object Manipulation",
     },
     {
-    question_text:"Une des réponses fait partie des conventions de nommage de variables en javascrypt;laquelle?:",
-    answer_text:"Sensibilité à la casse",
+    question_text:"Une des des conventions vraies de javascrypt c'est:",
+    answer_text:"La Sensibilité à la casse",
     a:"L'utilisation des mots reservés",
     b:"Commencer par un chiffre",
-    c:"Sensibilité à la casse",
+    c:"La Sensibilité à la casse",
     d:"Définition du type d'article",
     },
     {
     question_text:"La fonction native CharAt retourne:",
     answer_text:"Le caractère à l'index spécifié",
-    a:"Joind deux ou plusieurs chaines",
+    a:"Joinds deux ou plusieurs chaines",
     b:"Le caractère à l'index spécifié",
-    c:"Appelle une fonction pour chaque élement du tableau",
+    c:"Appelle une fonction pour chaque e du tableau",
     d:"La longueur de la chaine",
     },
     {
@@ -41,23 +41,23 @@ let questions_db=[
     d:"let",
     },
     {
-    question_text:"La fonction native forEach retourne: ?",
-    answer_text:"Appelle une fonction pour chaque élement du tableau",
-    a:"Joind deux ou plusieurs chaines",
-    b:"Le caractère à l'index spécifié",
-    c:"Appelle une fonction pour chaque élement du tableau",
-    d:"La longueur de la chaine",
+    question_text:"La fonction qui appelle une fonction pour chaque element du tableau c'est: ?",
+    answer_text:"forEach",
+    a:"for loop",
+    b:"while loop",
+    c:"forEach",
+    d:"do while loop",
     },
     {
-    question_text:"Les avantages de javascrypt sont sauf?",
-    answer_text:"",
-    a:"Peu d'interaction avec le serveur",
+    question_text:"Javascrypt est un langage aux caracteristiques suivants sauf?",
+    answer_text:"processus backend fiable",
+    a:"processus backend fiable",
     b:"fidback immedia au visiteur",
     c:"L'interactivité augmentée",
     d:"Les interfaces plus riches",
     },
     {
-    question_text:"Les caracteristiques de javascrypt sont sauf?",
+    question_text:"Indiquez la fausse assertion concernat le langage javascrypt?",
     answer_text:"",
     a:"Un langage interpreté et leger",
     b:"Open et cross plateforme",
@@ -101,7 +101,7 @@ let questions_db=[
     answer_text:"Un tableau dans l'ordre inversé",
     a:"Joind deux ou plusieurs chaines",
     b:"Le caractère à l'index spécifié",
-    c:"Appelle une fonction pour chaque élement du tableau",
+    c:"La longueur du tableau",
     d:"Un tableau dans l'ordre inversé",
     },
     {
@@ -109,7 +109,7 @@ let questions_db=[
     answer_text:"L'index de la première ocurrence de la valeur spécifiée dans une chaine",
     a:"Joind deux ou plusieurs chaines",
     b:"Le caractère à l'index spécifié",
-    c:"L'index de la première ocurrence de la valeur spécifiée dans une chaine",
+    c:"processus backend fiable",
     d:"Un tableau dans l'ordre inversé",
     },
     {
@@ -142,7 +142,7 @@ let questions_db=[
     const success_mail = document.querySelector(".success_email");
     const next_question = document.querySelector(".continu");
     const nth_question_show = document.querySelector(".nth_question");
-const quit = document.querySelector(".quit");
+    const quit = document.querySelector(".quit");
 
     const a_text = document.getElementById("a_text");
     const b_text = document.getElementById("b_text");
@@ -153,6 +153,8 @@ const quit = document.querySelector(".quit");
     function quizInit(){
         start_form.addEventListener("submit", function(e){
             e.preventDefault();
+            const required_name = document.getElementById("required_name");
+            const required_mail = document.getElementById("required_mail");
             const inputData = this.elements;
             if(inputData[0].value==""){
                 required_name.innerText="noubliez pas de renseigner votre nom avant de commence le quiz";
@@ -164,15 +166,16 @@ const quit = document.querySelector(".quit");
                 start_modal.style.display="none";
                 questions_box.style.display="block";
                 timeProcess(60);
+                progress_(90);
 
             }   
         })
     
     }
     quizInit();
-    next_question.disabled=true;
-    
-    // timer setting function implementation
+    next_question.disabled=true;  
+
+
     let counter=0;
     let time_amount=60;
     function timeProcess(time){
@@ -180,56 +183,66 @@ const quit = document.querySelector(".quit");
         function set_timer(){
             timer.textContent = time; 
             time -=1;
-            progressbar.style.width = time*1.667 +"%";
             if (time < 0) {
                 next_question.disabled=false;
                 nth_question +=1;
+              if(nth_question==questions_db.length-1) next_question.innerText="Terminer";
                 if(nth_question<questions_db.length){
                     load_nth_question();    
                     clearInterval(counter);
                     timeProcess(time_amount);
+                    progress_(90);
                 }else{
                   scoreCompute();
                 }
             }
         }
     }
+    
+    let progress=0;
+    function progress_(time){
+  progress=setInterval(timer, 1000);
+    function timer(){
+      progressbar.style.width = time+"%";
+      time -=1.5;
+    }
+  }
 
-    // get the selected radion button and enable the continue button
+    
     const disableNextBtn=()=>{
     const radios = document.querySelectorAll('.option');
     for ( let radio of radios) {
         radio.onclick=()=>{
-            next_question.disabled=false;
+          next_question.style.background="#028A3D";
+          next_question.disabled=false;
+          next_question.disabled=false;  
         }
     }
-}
-disableNextBtn();
-
-
-// dataloading function implementation
-    
-let nth_question = 0;
-const load_nth_question =()=>{
-  if(nth_question<questions_db.length){
-    current_question_db = questions_db[nth_question];
-    
-    question_text.innerText=
-    questions_db[nth_question].question_text;
-    nth_question_show.innerText = nth_question +1+ '/' + questions_db.length; 
-
-    a_text.innerText = current_question_db.a;
-    b_text.innerText = current_question_db.b;
-    c_text.innerText = current_question_db.c;
-    d_text.innerText = current_question_db.d;
-  }
+          next_question.disabled=true;  
 
 }
-load_nth_question();
+    disableNextBtn();
+   
+    // dataloading function implementation
+    let nth_question = 0;
+    const load_nth_question =()=>{
+      if(nth_question<questions_db.length){
+        current_question_db = questions_db[nth_question];
+        question_text.innerText=
+        questions_db[nth_question].question_text;
+        nth_question_show.innerText = nth_question +1+ '/' +         questions_db.length; 
 
-
-//getting the selected radio button function implementation
-const getSelectedAnswer = ()=>{
+        a_text.innerText = current_question_db.a;
+        b_text.innerText = current_question_db.b;
+        c_text.innerText = current_question_db.c;
+        d_text.innerText = current_question_db.d;
+      }
+    }
+    
+    load_nth_question();
+   
+    //getting the selected radio button function implementation
+    const getSelectedAnswer = ()=>{
     let user_answer;
     answer_options.forEach(current_option =>{
         if (current_option.checked) {
@@ -238,21 +251,24 @@ const getSelectedAnswer = ()=>{
     });
     return user_answer;
 }
-//deselecting selected radio button function implementation
-const uncheckSelectedOption=()=>{
+    
+    //deselecting selected radio button function implementation
+    
+    const uncheckSelectedOption=()=>{
     answer_options.forEach(current_options=>current_options.checked=false);
 }
-//user score computing function implementation 
-function scoreCompute(){
-    let user_percent = Math.round((user_score * 100)/15);
-    if(user_percent >= 50){
+    //user score computing function implementation 
+    let number_of_question = 15;
+    function scoreCompute(){
+      let user_percent = Math.round((user_score * 100)/number_of_question);
+      if(user_percent >= 50){
         const success_score = document.getElementById("success_score");
         success_name.innerText=input_name.value;
         success_mail.innerText =input_mail.value;
         success_score.innerText= user_score+ "/"+questions_db.length;
         success_box.style.display = "block";
         questions_box.style.display ="none";  
-    }else{
+      }else{
         const chess_score = document.getElementById("chess_score");
         chess_name.innerText=input_name.value;
         chess_mail.innerText =input_mail.value;
@@ -260,37 +276,40 @@ function scoreCompute(){
         chess_box.style.display = "block";
         questions_box.style.display ="none"; 
       }
-}
+    }
 
-//listning next question clicking event
-let user_score=0;
-next_question.addEventListener("click", ()=>{
-    clearInterval(counter); 
-    timeProcess(time_amount);
-    const user_answer = getSelectedAnswer();
-    if (user_answer==questions_db[nth_question].answer_text) {
+    //listning next question clicking event
+    let user_score=0;
+    next_question.addEventListener("click", ()=>{
+      clearInterval(counter); 
+      timeProcess(time_amount);
+      clearInterval(progress);
+      progress_(90);
+      const user_answer = getSelectedAnswer();
+      if (user_answer==questions_db[nth_question].answer_text) {
         user_score += 1;  
-    }
-
-    nth_question += 1;
-    uncheckSelectedOption();
-    if (nth_question < questions_db.length) {
-      load_nth_question(); 
-      nth_question_show.innerText = nth_question +1+ '/' + questions_db.length; 
-    }else{
+      }
+      nth_question += 1;
+      uncheckSelectedOption();
+      if (nth_question < questions_db.length) {
+        load_nth_question(); 
+      }
+      if(nth_question == questions_db.length-1){
+        next_question.innerText ="Terminer";
+      }
+      if(nth_question>questions_db.length-1){
         scoreCompute();
-    }
-})
-// page refreshment codes
-home1.onclick=()=>{
+      }
+    })
+    home1.onclick=()=>{
   document.location.reload();
 }
-home2.onclick=()=>{
+    home2.onclick=()=>{
     document.location.reload();
 }
-quit.onclick=()=>{
-    if(confirm("Do you want to quit current window ?")){
-        window.close();
-
-    }
+    quit.onclick=(e)=>{
+      e.preventDefault();
+      scoreCompute();
 }
+
+

@@ -5,20 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <title>Quiz App</title>
 </head>
 <body>
     <div class="start_modal">
         <h1>JavaScrypt Quiz</h1>
-        <p>Evaluez vos compétences en javaScrypt en répondant aux questions que nous avons spécialement selectionner pour vous.</p>
-      <p> C'est fun et c'est gratuit</p>
+        <p>Evaluez vos compétences en javaScrypt en répondant aux questions que nous avons spécialement selectionner pour vous<br>c'est fun et c'est gratuit.</p>
         <form method="POST" action="" class="start_form">
             <label for="name">Nom</label><br>
-            <input type="text" name="name" class="name"><br>
-          <label id="required_name"></label><br>
+            <input type="text" name="name" class="name" placeholder="Votre nom"><br>
+            <label id="required_name"></label><br>
             <label for="email">Email</label><br>
-            <input type="email" name="email"class="email"><br>
-        <label id="required_mail"></label>
+            <input type="email" name="email" class="email" placeholder="Votre email"><br>
+            <label id="required_mail"></label>
             <div class="btn_wrapper">
                 <button type="submit" class="start_btn">Commencer</button>
             </div >
@@ -27,10 +27,11 @@
     <div class="questions_box">
         <div >
             <p class="question_text"></p>
-            <p>Question N°<span class="nth_question">1/15</span><span class="timer"></span></p>
+            <label id="N">Question N°<span class="nth_question">1/15</span><span class="timer"></span></label>
         </div>
-        <div class="progress-bar"></div>
         <form method="POST" class="choice_option">
+          <div class="progress-bar"></div>
+
             <div class="option"><input type="radio" name="option"id="a"class="answer"><label for="a"id="a_text"></label></div>
             <div class="option"><input type="radio" name="option"id="b"class="answer"><label for="b"id="b_text"></label></div>
             <div class="option"><input type="radio" name="option"id="c"class="answer"><label for="c"id="c_text"></label></div>
@@ -45,7 +46,7 @@
         <h2 class="success_name"></h2>
         <p class="success_email"></p>
         <div class="icon_tick">
-            <img src="./ant-design_check-circle-outlined.png"width="150">
+            <img src="./ant-design_check-circle-outlined.png" width="150">
         </div>
         <p><span  id="success_score"></span></p>
         <button type="submit" class="home1">Accueil</button>
